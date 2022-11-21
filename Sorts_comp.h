@@ -16,7 +16,7 @@ void mergeSort_comp(int* arr, int l, int r, long long& comparisons);
 
 void mergeSort_comp(int* arr, int n, long long& comparisions);
 
-void quickSort_comp(int* arr, int low, int high, long long& comparisons);
+void quickSort_comp(int* arr, int left, int right, long long& comparisons);
 
 void quickSort_comp(int* arr, int n, long long& comparisions);
 
