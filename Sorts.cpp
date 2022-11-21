@@ -212,54 +212,32 @@ void mergeSort(int* arr, int n) {
 
 // QUICK sort
 
-int patrition(int* arr, int low, int high)
-
+void quickSort(int* arr, int left, int right)
 {
+    if (left < right)
+    {   
+        int pivot = arr[(left + right) / 2];
+        int i = left;
+        int j = right;
 
-    int pivot = arr[high];
+        while (i < j) {
+            while (arr[i] < pivot)
+                i++;
+            while (arr[j] > pivot)
+                j--;
 
-    int i = low - 1;
-
-    for (int j = low; j < high; j++)
-
-    {
-
-        if (arr[j] <= pivot)
-
-        {
-
-            ++i;
-
-            swap(arr[i], arr[j]);
+            if (i <= j)
+            {
+                swap(arr[i], arr[j]);
+                i++;
+                j--;
+            }
         }
-    }
 
-    swap(arr[i + 1], arr[high]);
-
-    return i + 1;
-}
-
-void quickSort(int* arr, int low, int high)
-
-{
-
-    if (low < high)
-
-    {
-
-        // divide arr -> smaller than pivot on the left and
-
-        // larger than pivot on the right
-
-        int pi = patrition(arr, low, high);
-
-        // cout << pi << endl;
-
-        // recursive call on the left and right of pivot
-
-        quickSort(arr, low, pi - 1);
-
-        quickSort(arr, pi + 1, high);
+        if (j > left)
+            quickSort(arr, left, j);
+        if (i < right)
+            quickSort(arr, i, right);
     }
 }
 
