@@ -215,56 +215,36 @@ void mergeSort_comp(int* arr, int n, long long& comparisions)
 
 // QUICK sort with comparisons
 
-int patrition_comp(int* arr, int low, int high, long long& comparisons)
 
+void quickSort_comp(int* arr, int left, int right,long long &comparisions)
 {
-
-    int pivot = arr[high];
-
-    int i = low - 1;
-
-    for (int j = low; (++comparisons, j < high); j++)
-
+    if (++comparisions && left < right)
     {
+        int pivot = arr[(left + right) / 2];
+        int i = left;
+        int j = right;
 
-        if (++comparisons && arr[j] <= pivot)
+        while (++comparisions && i < j) {
+            while (++comparisions && arr[i] < pivot)
+                i++;
+            while (++comparisions && arr[j] > pivot)
+                j--;
 
-        {
-
-            ++i;
-
-            swap(arr[i], arr[j]);
+            if (++comparisions && i <= j)
+            {
+                swap(arr[i], arr[j]);
+                i++;
+                j--;
+            }
         }
-    }
 
-    swap(arr[i + 1], arr[high]);
-
-    return i + 1;
-}
-
-void quickSort_comp(int* arr, int low, int high, long long& comparisons)
-
-{
-
-    if (++comparisons && low < high)
-
-    {
-
-        // divide arr -> smaller than pivot on the left and
-
-        // larger than pivot on the rightF
-
-        int pi = patrition_comp(arr, low, high, comparisons);
-
-        // cout << pi << endl;
-
-        // recursive call on the left and right of pivot
-
-        quickSort_comp(arr, low, pi - 1, comparisons);
-
-        quickSort_comp(arr, pi + 1, high, comparisons);
+        if (++comparisions && j > left)
+            quickSort_comp(arr, left, j,comparisions);
+        if (++comparisions && i < right)
+            quickSort_comp(arr, i, right,comparisions);
     }
 }
+
 // function overloading:
 void quickSort_comp(int* arr, int n, long long& comparisions)
 {
