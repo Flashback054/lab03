@@ -15,7 +15,7 @@ void merge(int* arr, int p, int q, int r);
 void mergeSort(int* arr, int l, int r);
 void mergeSort(int* arr, int n);
 
-void quickSort(int* arr, int low, int high);
+void quickSort(int* arr, int left, int right);
 void quickSort(int* arr, int n);
 
 void countingSortForRadix(int* arr, int n, int place);
